@@ -4,3 +4,11 @@ GET {{Todos.Api_HostAddress}}/todos
 Accept: application/json
 
 ###
+
+
+POST {{Todos.Api_HostAddress}}/todos
+Content-Type: application/json
+
+{
+    "description": "Take out Recycling"
+}

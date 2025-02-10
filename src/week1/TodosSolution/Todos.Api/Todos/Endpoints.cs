@@ -1,4 +1,6 @@
-﻿namespace Todos.Api.Todos;
+﻿using Marten;
+
+namespace Todos.Api.Todos;
 
 public static class Endpoints
 {
@@ -8,19 +10,15 @@ public static class Endpoints
     public static IEndpointRouteBuilder MapTodos(this IEndpointRouteBuilder builder)
     {
         // GET /todos
-        builder.MapGet("/todos", () =>
+        builder.MapGet("/todos", async (IDocumentSession session) =>
         {
-            var fakeData = new List<TodoListItem>()
-            {
-                new TodoListItem() { Id = Guid.NewGuid(), Description = "Clean Garage", Completed = false, CreatedOn = DateTimeOffset.UtcNow
-            } };
-
-            return Results.Ok(fakeData);
+            var response = await session.Query<TodoListItem>().ToListAsync();
+            return Results.Ok(response);
         });
         // POST /todos
 
 
-        builder.MapPost("/todos", (TodoListCreateItem request) =>
+        builder.MapPost("/todos", async (TodoListCreateItem request, IDocumentSession session) =>
         {
 
             var response = new TodoListItem
@@ -30,6 +28,9 @@ public static class Endpoints
                 Completed = false,
                 CreatedOn = DateTimeOffset.UtcNow
             };
+
+            session.Store(response);
+            await session.SaveChangesAsync();
             return Results.Ok(response);
         });
         return builder;

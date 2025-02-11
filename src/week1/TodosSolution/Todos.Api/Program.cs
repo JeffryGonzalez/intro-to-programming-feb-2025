@@ -4,6 +4,17 @@ using Todos.Api.Todos;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(pol =>
+{
+    // this is demo code - refer to your local authorities here.
+    pol.AddDefaultPolicy(c =>
+    {
+        c.AllowAnyHeader();
+        c.AllowAnyMethod();
+        c.AllowAnyOrigin();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddAuthorization();
 
@@ -19,6 +30,8 @@ builder.Services.AddOpenApi();
 
 // above this line is configuration for the services inside our application
 var app = builder.Build();
+
+app.UseCors();
 // after this line is configuration for how HTTP requests and responses and handled.
 
 // Configure the HTTP request pipeline.

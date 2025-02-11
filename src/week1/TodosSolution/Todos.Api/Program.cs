@@ -32,3 +32,4 @@ app.MapTodos();
 
 app.Run(); // "Blocked" here. 
 
+public partial class Program { }

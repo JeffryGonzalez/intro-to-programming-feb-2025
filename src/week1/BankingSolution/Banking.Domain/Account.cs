@@ -1,5 +1,6 @@
 ﻿
 
+
 namespace Banking.Domain;
 
 
@@ -15,6 +16,13 @@ public class Account
     {
         // "Slime it"
         return _openingBalance; 
+    }
+
+    public void Withdraw(decimal amountToWithdraw)
+    {
+       
+            _openingBalance -= amountToWithdraw;
+       
     }
 }
 

@@ -21,6 +21,8 @@ public class MakingDeposits
 
         var newBalance = account.GetBalance();
 
+      
+
         Assert.Equal(amountToDeposit + openingBalance, account.GetBalance());
         
     }

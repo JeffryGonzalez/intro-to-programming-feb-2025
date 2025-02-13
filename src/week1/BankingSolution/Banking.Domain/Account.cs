@@ -20,8 +20,14 @@ public class Account
 
     public void Withdraw(decimal amountToWithdraw)
     {
-       
+        if (_openingBalance >= amountToWithdraw)
+        {
             _openingBalance -= amountToWithdraw;
+        }
+        else
+        {
+            // noop as a place holder
+        }
        
     }
 }

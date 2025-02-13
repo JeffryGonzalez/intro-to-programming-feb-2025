@@ -8,8 +8,8 @@ public class MakingWithdrawals
     [Theory]
     [InlineData(42.23)]
     [InlineData(3.23)]
-    [InlineData(5000)] // can take the full balance
-    [InlineData(5000.01)] // sus?
+  
+   
     public void MakingWithdrawalsDecreasesTheBalance(decimal amountToWithdraw)
     {
         var account = new Account();
@@ -22,15 +22,25 @@ public class MakingWithdrawals
             account.GetBalance());
     }
 
-    [Fact(Skip ="We'll do this in the morning")]
-    public void OverdraftNotAllowed()
+    [Fact]
+    public void CanWithdrawFullBalance()
+    {
+        var account = new Account();
+
+        account.Withdraw(account.GetBalance());
+
+        Assert.Equal(0, account.GetBalance());  
+    }
+
+    [Fact]
+    public void WhenOverdraftBalanceIsNotReducedNotAllowed()
     {
 
         var account = new Account();
         var openingBalance = account.GetBalance();
-        var amountToWithdraw = openingBalance + .01M;
+        var amountThatRepresentsMoreThanTheCurrentBalance = openingBalance + .01M;
 
-        account.Withdraw(amountToWithdraw);
+        account.Withdraw(amountThatRepresentsMoreThanTheCurrentBalance);
 
         Assert.Equal(openingBalance, account.GetBalance());
     }

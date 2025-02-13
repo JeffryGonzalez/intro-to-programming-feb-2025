@@ -1,6 +1,7 @@
 ﻿
 
 using Banking.Domain;
+using Banking.Tests.TestDoubles;
 
 namespace Banking.Tests.Accounts;
 public class NewAccounts
@@ -10,8 +11,8 @@ public class NewAccounts
     {
         var correctOpeningBalance = 5000M;
         // "Write the Code You Wish You Had" - More Corey Haines Wisdom
-        var myAccount = new Account();
-        var yourAccount = new Account();
+        var myAccount = new Account(new DummyBonusCalculator());
+        var yourAccount = new Account(new DummyBonusCalculator());
 
         var myBalance = myAccount.GetBalance();
         decimal yourBalance = yourAccount.GetBalance();

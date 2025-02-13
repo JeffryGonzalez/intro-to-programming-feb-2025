@@ -1,5 +1,6 @@
 ﻿
 using Banking.Domain;
+using Banking.Tests.TestDoubles;
 
 namespace Banking.Tests.GoldAccounts;
 public class GetBonusOnDeposits
@@ -9,7 +10,7 @@ public class GetBonusOnDeposits
     public void GetBonus()
     {
         // Given
-        var account = new Account();
+        var account = new Account(new DummyBonusCalculator());
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
         var expectedBonus = 20M;

@@ -40,8 +40,35 @@ public class MakingWithdrawals
         var openingBalance = account.GetBalance();
         var amountThatRepresentsMoreThanTheCurrentBalance = openingBalance + .01M;
 
-        account.Withdraw(amountThatRepresentsMoreThanTheCurrentBalance);
+        try
+        {
+            account.Withdraw(amountThatRepresentsMoreThanTheCurrentBalance);
+        } catch (AccountTransactionException)
+        {
+            // cool cool. swalling this...
+        }
 
         Assert.Equal(openingBalance, account.GetBalance());
+    }
+
+    [Fact]
+    public void WhenOverdraftMethodThrows()
+    {
+        var account = new Account();
+        var openingBalance = account.GetBalance();
+        var amountThatRepresentsMoreThanTheCurrentBalance = openingBalance + .01M;
+        //var exceptionThrow = false;
+        //try
+        //{
+        //    account.Withdraw(amountThatRepresentsMoreThanTheCurrentBalance);
+        //}
+        //catch (AccountOverdraftException) {
+        //    // this is what we want!
+        //    exceptionThrow = true;
+        //}
+        //    Assert.True(exceptionThrow);
+
+        Assert.Throws<AccountOverdraftException>(() => account.Withdraw(amountThatRepresentsMoreThanTheCurrentBalance));
+
     }
 }

@@ -15,6 +15,7 @@ public class Account
     }
     public void Deposit(decimal amountToDeposit)
     {
+        
         CheckTransactionAmount(amountToDeposit);
         _currentBalance += amountToDeposit;
     }

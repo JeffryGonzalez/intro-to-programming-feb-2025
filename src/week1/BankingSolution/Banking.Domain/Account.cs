@@ -25,7 +25,9 @@ public class Account
     {
         
         CheckTransactionAmount(amountToDeposit);
-        _currentBalance += amountToDeposit + _bonusCalculator.CalculateBonusForDeposit(_currentBalance, amountToDeposit); ;
+
+        var bonus = _bonusCalculator.CalculateBonusForDeposit( _currentBalance, amountToDeposit);
+        _currentBalance += amountToDeposit + bonus;
     }
 
     // Commands - telling our account to do some work.

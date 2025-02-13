@@ -10,10 +10,10 @@ public class GetBonusOnDeposits
     public void GetBonus()
     {
         // Given
-        var account = new Account(new DummyBonusCalculator());
+        var account = new Account(new StubbedBonusCalculator());
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
-        var expectedBonus = 20M;
+        var expectedBonus = 420.69M;
         var expectedNewBalance = openingBalance + amountToDeposit + expectedBonus;
 
         // When
@@ -23,4 +23,19 @@ public class GetBonusOnDeposits
         Assert.Equal(expectedNewBalance, account.GetBalance());
             
     }
+}
+
+
+public class StubbedBonusCalculator : ICalculateBonusesForDepositsOnAccounts
+{
+  public decimal CalculateBonusForDeposit(decimal balance, decimal depositAmount)
+  {
+    if(balance == 5000 && depositAmount==  100M)
+        {
+            return 420.69M;
+        }  else
+        {
+            return 0;
+        }
+  }
 }

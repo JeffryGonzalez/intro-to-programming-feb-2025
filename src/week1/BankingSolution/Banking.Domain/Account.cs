@@ -1,4 +1,4 @@
-﻿
+
 
 
 namespace Banking.Domain;
@@ -10,7 +10,7 @@ public class Account
 
   public Account(ICalculateBonusesForDepositsOnAccounts bonusCalculator)
   {
-        _currentBalance = 5000M;
+    _currentBalance = 5000M;
     _bonusCalculator = bonusCalculator;
   }
 

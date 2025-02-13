@@ -1,6 +1,7 @@
-﻿
+
 using Banking.Domain;
 using Banking.Tests.TestDoubles;
+using NSubstitute;
 
 namespace Banking.Tests.GoldAccounts;
 public class GetBonusOnDeposits
@@ -10,10 +11,16 @@ public class GetBonusOnDeposits
     public void GetBonus()
     {
         // Given
-        var account = new Account(new StubbedBonusCalculator());
+        var stubbedBonusCalculator = Substitute.For<ICalculateBonusesForDepositsOnAccounts>();
+
+        var account = new Account(stubbedBonusCalculator);
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
         var expectedBonus = 420.69M;
+        stubbedBonusCalculator.CalculateBonusForDeposit(
+          openingBalance,
+          amountToDeposit).Returns(expectedBonus);
+
         var expectedNewBalance = openingBalance + amountToDeposit + expectedBonus;
 
         // When

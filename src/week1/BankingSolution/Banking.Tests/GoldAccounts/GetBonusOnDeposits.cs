@@ -9,7 +9,7 @@ public class GetBonusOnDeposits
     public void GetBonus()
     {
         // Given
-        var account = new Account();
+        var account = new GoldAccount();
         var openingBalance = account.GetBalance();
         var amountToDeposit = 100M;
         var expectedBonus = 20M;

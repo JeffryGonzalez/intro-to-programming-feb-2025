@@ -4,48 +4,120 @@
   "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
   "elements": [
     {
-      "id": "ze7a-dZhIva06mTSb0z0n",
       "type": "text",
+      "version": 6,
+      "versionNonce": 807410854,
+      "isDeleted": false,
+      "id": "ze7a-dZhIva06mTSb0z0n",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
       "x": 734,
       "y": 214,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
       "width": 491.57958984375,
       "height": 75,
-      "angle": 0,
-      "strokeColor": "#1e1e1e",
-      "backgroundColor": "transparent",
-      "fillStyle": "solid",
-      "strokeWidth": 2,
-      "strokeStyle": "solid",
-      "roughness": 1,
-      "opacity": 100,
+      "seed": 2086214499,
       "groupIds": [],
       "frameId": null,
       "roundness": null,
-      "seed": 2086214499,
-      "version": 5,
-      "versionNonce": 943583693,
-      "isDeleted": false,
-      "boundElements": null,
-      "updated": 1739373189297,
+      "boundElements": [],
+      "updated": 1739468061134,
       "link": null,
       "locked": false,
-      "text": "https://martinfowler.com/bliki/BeckDesignRules.html\n\n",
       "fontSize": 20,
       "fontFamily": 1,
+      "text": "https://martinfowler.com/bliki/BeckDesignRules.html\n\n",
       "textAlign": "left",
       "verticalAlign": "top",
-      "baseline": 68,
       "containerId": null,
       "originalText": "https://martinfowler.com/bliki/BeckDesignRules.html\n\n",
-      "lineHeight": 1.25
+      "lineHeight": 1.25,
+      "baseline": 68
     },
     {
-      "id": "lNfj8Nu-3rmiS4oEgYBrh",
       "type": "text",
+      "version": 777,
+      "versionNonce": 1996089530,
+      "isDeleted": false,
+      "id": "lNfj8Nu-3rmiS4oEgYBrh",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
       "x": 383,
       "y": 359,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
       "width": 1092.9990234375,
       "height": 425,
+      "seed": 2064603331,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1739468061136,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "- \"Passes The Tests\" - works.\n    - if it needs to be \"secure\", have tests to prove it is secure.\n    - if it needs to have a certain level of performance (response time, throughput, etc.) make a test for it.\n- \"Reveals Intention\" - you are writing code that will be read for a long.... time, by you and others.\n    - instead of comments, use tests to demonstration the intention of this code.\n- \"No Duplication\" (just notice this is below reveals intention)\n    - \"Don't type 'private' always refactor to it\" - Corey Haines\n- Fewest Elements - elements are variables, decisions, loops, other classes, helpers, all that stuff.\n\n\n\n\n// format the name\nvar fullName = lastName + ', ' + firstName;\n\n\n",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "- \"Passes The Tests\" - works.\n    - if it needs to be \"secure\", have tests to prove it is secure.\n    - if it needs to have a certain level of performance (response time, throughput, etc.) make a test for it.\n- \"Reveals Intention\" - you are writing code that will be read for a long.... time, by you and others.\n    - instead of comments, use tests to demonstration the intention of this code.\n- \"No Duplication\" (just notice this is below reveals intention)\n    - \"Don't type 'private' always refactor to it\" - Corey Haines\n- Fewest Elements - elements are variables, decisions, loops, other classes, helpers, all that stuff.\n\n\n\n\n// format the name\nvar fullName = lastName + ', ' + firstName;\n\n\n",
+      "lineHeight": 1.25,
+      "baseline": 418
+    },
+    {
+      "type": "text",
+      "version": 36,
+      "versionNonce": 2088867814,
+      "isDeleted": false,
+      "id": "uodmeekTWQ6PRPX44STES",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "angle": 0,
+      "x": 342,
+      "y": 162,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "width": 283.81976318359375,
+      "height": 50,
+      "seed": 1989314179,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "boundElements": [],
+      "updated": 1739468061137,
+      "link": null,
+      "locked": false,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Nick Chapsas - YouTube guy.\n- ",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "containerId": null,
+      "originalText": "Nick Chapsas - YouTube guy.\n- ",
+      "lineHeight": 1.25,
+      "baseline": 43
+    },
+    {
+      "id": "ddydAV0ftu-R1SXQoYyng",
+      "type": "text",
+      "x": 443.99951171875,
+      "y": 814,
+      "width": 860.8360290527343,
+      "height": 56.999999999999986,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -57,31 +129,31 @@
       "groupIds": [],
       "frameId": null,
       "roundness": null,
-      "seed": 2064603331,
-      "version": 776,
-      "versionNonce": 399202883,
+      "seed": 29185638,
+      "version": 65,
+      "versionNonce": 1821927078,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1739374833622,
+      "updated": 1739468081277,
       "link": null,
       "locked": false,
-      "text": "- \"Passes The Tests\" - works.\n    - if it needs to be \"secure\", have tests to prove it is secure.\n    - if it needs to have a certain level of performance (response time, throughput, etc.) make a test for it.\n- \"Reveals Intention\" - you are writing code that will be read for a long.... time, by you and others.\n    - instead of comments, use tests to demonstration the intention of this code.\n- \"No Duplication\" (just notice this is below reveals intention)\n    - \"Don't type 'private' always refactor to it\" - Corey Haines\n- Fewest Elements - elements are variables, decisions, loops, other classes, helpers, all that stuff.\n\n\n\n\n// format the name\nvar fullName = lastName + ', ' + firstName;\n\n\n",
-      "fontSize": 20,
+      "text": "\"Prefer Composition Over Inheritance\" ",
+      "fontSize": 45.59999999999999,
       "fontFamily": 1,
       "textAlign": "left",
       "verticalAlign": "top",
-      "baseline": 418,
+      "baseline": 40,
       "containerId": null,
-      "originalText": "- \"Passes The Tests\" - works.\n    - if it needs to be \"secure\", have tests to prove it is secure.\n    - if it needs to have a certain level of performance (response time, throughput, etc.) make a test for it.\n- \"Reveals Intention\" - you are writing code that will be read for a long.... time, by you and others.\n    - instead of comments, use tests to demonstration the intention of this code.\n- \"No Duplication\" (just notice this is below reveals intention)\n    - \"Don't type 'private' always refactor to it\" - Corey Haines\n- Fewest Elements - elements are variables, decisions, loops, other classes, helpers, all that stuff.\n\n\n\n\n// format the name\nvar fullName = lastName + ', ' + firstName;\n\n\n",
+      "originalText": "\"Prefer Composition Over Inheritance\" ",
       "lineHeight": 1.25
     },
     {
-      "id": "uodmeekTWQ6PRPX44STES",
-      "type": "text",
-      "x": 342,
-      "y": 162,
-      "width": 283.81976318359375,
-      "height": 50,
+      "id": "uDVKStGdy93LGOgwtzIes",
+      "type": "freedraw",
+      "x": 410.99951171875,
+      "y": 1096,
+      "width": 527,
+      "height": 236,
       "angle": 0,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
@@ -93,23 +165,345 @@
       "groupIds": [],
       "frameId": null,
       "roundness": null,
-      "seed": 1989314179,
-      "version": 35,
-      "versionNonce": 1819884525,
+      "seed": 1304057914,
+      "version": 46,
+      "versionNonce": 1852710758,
       "isDeleted": false,
       "boundElements": null,
-      "updated": 1739374696338,
+      "updated": 1739468114807,
       "link": null,
       "locked": false,
-      "text": "Nick Chapsas - YouTube guy.\n- ",
-      "fontSize": 20,
-      "fontFamily": 1,
-      "textAlign": "left",
-      "verticalAlign": "top",
-      "baseline": 43,
-      "containerId": null,
-      "originalText": "Nick Chapsas - YouTube guy.\n- ",
-      "lineHeight": 1.25
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          -3
+        ],
+        [
+          8,
+          -24
+        ],
+        [
+          14,
+          -47
+        ],
+        [
+          22,
+          -67
+        ],
+        [
+          25,
+          -73
+        ],
+        [
+          37,
+          -92
+        ],
+        [
+          45,
+          -104
+        ],
+        [
+          56,
+          -118
+        ],
+        [
+          67,
+          -129
+        ],
+        [
+          74,
+          -134
+        ],
+        [
+          96,
+          -150
+        ],
+        [
+          110,
+          -158
+        ],
+        [
+          114,
+          -161
+        ],
+        [
+          137,
+          -170
+        ],
+        [
+          143,
+          -172
+        ],
+        [
+          152,
+          -174
+        ],
+        [
+          168,
+          -175
+        ],
+        [
+          184,
+          -175
+        ],
+        [
+          217,
+          -172
+        ],
+        [
+          242,
+          -171
+        ],
+        [
+          249,
+          -170
+        ],
+        [
+          283,
+          -164
+        ],
+        [
+          302,
+          -158
+        ],
+        [
+          317,
+          -150
+        ],
+        [
+          334,
+          -138
+        ],
+        [
+          360,
+          -112
+        ],
+        [
+          366,
+          -107
+        ],
+        [
+          375,
+          -98
+        ],
+        [
+          384,
+          -86
+        ],
+        [
+          401,
+          -69
+        ],
+        [
+          405,
+          -65
+        ],
+        [
+          429,
+          -36
+        ],
+        [
+          445,
+          -20
+        ],
+        [
+          458,
+          -6
+        ],
+        [
+          471,
+          7
+        ],
+        [
+          488,
+          25
+        ],
+        [
+          491,
+          28
+        ],
+        [
+          499,
+          35
+        ],
+        [
+          502,
+          39
+        ],
+        [
+          514,
+          50
+        ],
+        [
+          521,
+          56
+        ],
+        [
+          526,
+          61
+        ],
+        [
+          527,
+          61
+        ],
+        [
+          527,
+          61
+        ]
+      ],
+      "pressures": [],
+      "simulatePressure": true,
+      "lastCommittedPoint": [
+        527,
+        61
+      ]
+    },
+    {
+      "id": "AoauhRaLFoVunLoJ5-Xbp",
+      "type": "freedraw",
+      "x": 609.99951171875,
+      "y": 872,
+      "width": 234,
+      "height": 7,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 1982210746,
+      "version": 28,
+      "versionNonce": 1410099814,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1739468117670,
+      "link": null,
+      "locked": false,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          17,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          35,
+          1
+        ],
+        [
+          84,
+          7
+        ],
+        [
+          135,
+          7
+        ],
+        [
+          144,
+          6
+        ],
+        [
+          153,
+          6
+        ],
+        [
+          159,
+          6
+        ],
+        [
+          162,
+          5
+        ],
+        [
+          173,
+          5
+        ],
+        [
+          180,
+          5
+        ],
+        [
+          195,
+          5
+        ],
+        [
+          207,
+          5
+        ],
+        [
+          214,
+          5
+        ],
+        [
+          216,
+          5
+        ],
+        [
+          218,
+          5
+        ],
+        [
+          222,
+          5
+        ],
+        [
+          226,
+          5
+        ],
+        [
+          229,
+          4
+        ],
+        [
+          230,
+          4
+        ],
+        [
+          232,
+          4
+        ],
+        [
+          234,
+          4
+        ],
+        [
+          234,
+          4
+        ]
+      ],
+      "pressures": [],
+      "simulatePressure": true,
+      "lastCommittedPoint": [
+        234,
+        4
+      ]
     }
   ],
   "appState": {

@@ -6,23 +6,27 @@ namespace Banking.Domain;
 
 public class Account
 {
-    private decimal _openingBalance = 5000;
+    private decimal _currentBalance = 5000;
     public void Deposit(decimal amountToDeposit)
     {
-        _openingBalance += amountToDeposit;
+        _currentBalance += amountToDeposit;
     }
 
     public decimal GetBalance()
     {
         // "Slime it"
-        return _openingBalance; 
+        return _currentBalance; 
     }
 
     public void Withdraw(decimal amountToWithdraw)
     {
-        if (_openingBalance >= amountToWithdraw)
+        if(amountToWithdraw < 0)
         {
-            _openingBalance -= amountToWithdraw;
+            throw new AccountNegativeTransactionAmountException();
+        }
+        if (_currentBalance >= amountToWithdraw)
+        {
+            _currentBalance -= amountToWithdraw;
         }
         else
         {
@@ -31,4 +35,5 @@ public class Account
        
     }
 }
+
 

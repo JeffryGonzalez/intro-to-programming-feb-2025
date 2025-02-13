@@ -8,8 +8,6 @@ public class MakingWithdrawals
     [Theory]
     [InlineData(42.23)]
     [InlineData(3.23)]
-  
-   
     public void MakingWithdrawalsDecreasesTheBalance(decimal amountToWithdraw)
     {
         var account = new Account();
@@ -20,6 +18,17 @@ public class MakingWithdrawals
 
         Assert.Equal(openingBalance - amountToWithdraw,
             account.GetBalance());
+    }
+
+    [Fact]
+    public void CannotMakeWithdrawalWithNegativeNumbers()
+    {
+
+        var account = new Account();
+        Assert.Throws<AccountNegativeTransactionAmountException>(() => account.Withdraw(-3));
+
+       
+      
     }
 
     [Fact]

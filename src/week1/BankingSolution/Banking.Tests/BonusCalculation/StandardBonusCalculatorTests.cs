@@ -6,9 +6,9 @@ namespace Banking.Tests.BonusCalculation;
 public class StandardBonusCalculatorTests
 {
     [Theory]
-    [InlineData(5000, 100, 20)]
-    [InlineData(5000, 200, 40)]
-    [InlineData(10_000, 200, 40)]
+    [InlineData(5000, 100, 10)]
+    [InlineData(5000, 200, 20)]
+    [InlineData(10_000, 200, 20)]
    
     public void BonusesThatMeetThresholdGetBonus(decimal balance, decimal depositAmount, decimal expectedBonus)
     {

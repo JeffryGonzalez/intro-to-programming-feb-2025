@@ -15,9 +15,10 @@ public class Account
     }
     public void Deposit(decimal amountToDeposit)
     {
-        
+        var bonusCalculator = new StandardBonusCalculator();
+
         CheckTransactionAmount(amountToDeposit);
-        _currentBalance += amountToDeposit;
+        _currentBalance += amountToDeposit + bonusCalculator.CalculateBonusForDeposit(_currentBalance, amountToDeposit); ;
     }
 
     // Commands - telling our account to do some work.

@@ -1,5 +1,7 @@
 
-public class Calculator
+using StringCalculator;
+
+public class Calculator(ILogger _logger, IWebService webService)
 {
   public int Add(string numbers)
   {
@@ -8,23 +10,37 @@ public class Calculator
       return 0;
     }
 
-    return numbers.Split(',', '\n').Select(int.Parse).Sum();
+    var result = numbers.Split(',', '\n').Select(int.Parse).Sum();
 
-   // var splitnumbers = numbers.Split(',', '\n');
-   // var numbersConverted = splitnumbers.Select(int.Parse);
-   //// splitnumbers[0] = "999";
-   // var sum = numbersConverted.Sum();
-   // return sum;
+    try
+    {
+      _logger.Write(result.ToString());
 
-    //if (numbers.Contains(','))
-    //{
-    //  var commaAt = numbers.IndexOf(',');
-    //  var firstPart = numbers[..commaAt];
-    //  var secondPart = numbers[(commaAt + 1)..];
+    }
+    catch (LoggingException ex)
+    {
+       webService.NotifyOfLoggingFailure(ex.Message); 
+    }
 
-    //  return int.Parse(firstPart) + int.Parse(secondPart);
-    //}
+   // webService.NotifyOfLoggingFailure("Jeff Was Here");
+    return result;
    
    
   }
+}
+
+
+public class LoggingException : Exception {
+
+  public string Message { get; }
+  public LoggingException(string message)
+  {
+    Message = message;
+  }
+}
+
+
+public interface IWebService
+{
+  void NotifyOfLoggingFailure(string message);
 }

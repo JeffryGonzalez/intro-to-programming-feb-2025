@@ -23,7 +23,11 @@ public class Account
     }
     public void Deposit(AccountTransactionAmount amountToDeposit)
     {
-        var bonus = _bonusCalculator.CalculateBonusForDeposit( _currentBalance, amountToDeposit);
+
+    var bonus = _bonusCalculator.CalculateBonusForDeposit( _currentBalance, amountToDeposit);
+    ////var bonus = _currentBalance >= 5000 ? amountToDeposit * .20M : 0;
+    //var bc = new StandardBonusCalculator();
+    //var bonus = bc.CalculateBonusForDeposit(_currentBalance, amountToDeposit);
         _currentBalance += amountToDeposit + bonus;
     }
 

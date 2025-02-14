@@ -3,13 +3,13 @@
 namespace StringCalculator;
 public class CalculatorTests
 {
+  private Calculator calculator = new Calculator(Substitute.For<ILogger>(), Substitute.For<IWebService>());
+
+
   [Fact]
   public void EmptyStringReturnsZero()
   {
-    var calculator = new Calculator();
-
     var result = calculator.Add("");
-
     Assert.Equal(0, result);
   }
 
@@ -22,7 +22,7 @@ public class CalculatorTests
 
   public void SingleDigit(string numbers, int expected)
   {
-    var calculator = new Calculator();
+    
 
     var result = calculator.Add(numbers);
 
@@ -34,7 +34,7 @@ public class CalculatorTests
   [InlineData("202,120", 322)]
   public void TwoDigits(string numbers, int expected)
   {
-    var calculator = new Calculator();
+   
 
     var result = calculator.Add(numbers);
 
@@ -46,7 +46,7 @@ public class CalculatorTests
  
   public void ArbitraryDigits(string numbers, int expected)
   {
-    var calculator = new Calculator();
+  
 
     var result = calculator.Add(numbers);
 
@@ -58,7 +58,7 @@ public class CalculatorTests
 
   public void ArbitraryMixedDelimeters(string numbers, int expected)
   {
-    var calculator = new Calculator();
+  
 
     var result = calculator.Add(numbers);
 

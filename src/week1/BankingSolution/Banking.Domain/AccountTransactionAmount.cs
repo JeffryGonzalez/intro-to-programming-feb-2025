@@ -3,7 +3,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace Banking.Domain;
 
-public record struct AccountTransactionAmount
+public class AccountTransactionAmount
 {
   private readonly decimal _amount;
 
@@ -11,16 +11,17 @@ public record struct AccountTransactionAmount
   //{
   //  return _amount;
   //}
-  public decimal Value {
+  private decimal Value
+  {
     get
     {
-      return _amount; 
+      return _amount;
     }
-    
-  }
- 
 
-  public AccountTransactionAmount(decimal value)
+  }
+
+  private AccountTransactionAmount() { } // this just says nobody can use this.
+  private AccountTransactionAmount(decimal value)
   {
     if (value < 0)
     {
@@ -32,7 +33,20 @@ public record struct AccountTransactionAmount
     }
     _amount = value;
   }
+  public static AccountTransactionAmount FromDecimal(decimal value)
+  {
+    return new AccountTransactionAmount(value);
+  }
 
+  public static AccountTransactionAmount FromInt(int x)
+  {
+    return new AccountTransactionAmount(x);
+  }
+
+  public static AccountTransactionAmount Parse(string amount)
+  {
+    return new(decimal.Parse(amount));
+  }
   public static implicit operator Decimal(AccountTransactionAmount a) => a.Value;
 
   public static implicit operator AccountTransactionAmount(decimal value) => new(value);

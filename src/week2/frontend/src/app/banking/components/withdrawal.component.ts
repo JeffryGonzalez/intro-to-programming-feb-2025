@@ -1,15 +1,5 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  inject,
-  effect,
-} from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BankService } from '../services/bank.service';
 
 @Component({

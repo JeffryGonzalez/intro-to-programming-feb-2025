@@ -1,43 +1,37 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  signal,
+  inject,
+} from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { BankService } from './services/bank.service';
 
 @Component({
   selector: 'app-banking',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CurrencyPipe],
+  providers: [BankService],
+  imports: [CurrencyPipe, RouterOutlet, RouterLink],
   template: `
-    <p>Banking Stuff Coming Soon</p>
     <div>
-      <p>Your Balance is {{ currentBalance() | currency }}</p>
-    </div>
-    <div>
-      <input #txamount type="number" class="input input-bordered" id="amount" />
+      <p>
+        Your Checking Balance is {{ currentBalance() | currency }}
+        <a routerLink="deposit" class="btn btn-xs btn-secondary"
+          >Make a Deposit</a
+        >
+        <a routerLink="withdrawal" class="btn btn-xs btn-secondary"
+          >Make a Withdrawal</a
+        >
+      </p>
       <div>
-        <button
-          (click)="withdraw(txamount.valueAsNumber)"
-          class="btn btn-warning"
-        >
-          Withdraw
-        </button>
-        <button
-          (click)="deposit(txamount.valueAsNumber)"
-          class="btn btn-primary"
-        >
-          Deposit
-        </button>
+        <router-outlet />
       </div>
     </div>
   `,
   styles: ``,
 })
 export class BankingComponent {
-  currentBalance = signal(5000);
-
-  deposit(amount: number) {
-    this.currentBalance.update((balance) => balance + amount);
-  }
-
-  withdraw(amount: number) {
-    this.currentBalance.update((balance) => balance - amount);
-  }
+  service = inject(BankService);
+  currentBalance = this.service.getCurrentBalance();
 }

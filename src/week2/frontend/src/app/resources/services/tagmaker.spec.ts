@@ -20,8 +20,12 @@ describe('Making Tags', () => {
     expect(results).toEqual([]);
   });
   it('Can Make Some Tags Convert to Lower Case', () => {
-    const results = tagMaker('DOG cat BeAr');
+    const results = tagMaker('DOG cat Bear');
 
     expect(results).toEqual(['dog', 'cat', 'bear']);
+  });
+  it('Strips out Extra Spaces', () => {
+    const results = tagMaker('dog   cat   bird   ');
+    expect(results).toEqual(['dog', 'cat', 'bird']);
   });
 });

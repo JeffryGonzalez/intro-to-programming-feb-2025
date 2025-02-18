@@ -1,5 +1,9 @@
 export function tagMaker(tagList: string): string[] {
-  return ['dog', 'cat', 'mouse'];
-}
+  const parts = tagList
+    .split(' ')
+    .filter((t) => t !== '')
+    .map((t) => t.trim())
+    .map((t) => t.toLowerCase());
 
-// angular frontend-end programming
+  return Array.from(new Set(parts));
+}

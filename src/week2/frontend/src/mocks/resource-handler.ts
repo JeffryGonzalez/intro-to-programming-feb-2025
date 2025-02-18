@@ -24,8 +24,8 @@ const FAKE_DATA: ResourceListItem[] = [
   },
 ];
 export const ResourceHandlers = [
-  http.get('http://localhost:1338/resources', async () => {
-    await delay(3000);
-    return HttpResponse.json(FAKE_DATA);
-  }),
+  //   http.get('http://localhost:1338/resources', async () => {
+  //     await delay(3000);
+  //     return HttpResponse.json(FAKE_DATA);
+  //   }),
 ];

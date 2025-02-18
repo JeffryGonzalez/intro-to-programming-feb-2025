@@ -9,7 +9,7 @@ describe('Making Tags', () => {
 
   it('Can Make Some Tags Duplicates', () => {
     const results = tagMaker('dog cat bear bear');
-
+    // fix this
     expect(results).toEqual(['dog', 'cat', 'bear']);
   });
 

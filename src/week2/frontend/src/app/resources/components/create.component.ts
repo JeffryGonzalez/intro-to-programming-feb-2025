@@ -86,6 +86,7 @@ export class CreateComponent {
   addItem() {
     // only do this if it is valid, follows all the rules, etc.
     // send it to our API to add it.
+    // service.sendThisToTheApi(this.form.value);
     console.log(this.form.value);
   }
 }

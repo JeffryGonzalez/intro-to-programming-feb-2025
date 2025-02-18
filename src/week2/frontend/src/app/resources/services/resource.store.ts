@@ -1,8 +1,8 @@
 import { patchState, signalStore, withHooks, withMethods } from '@ngrx/signals';
-import { addEntities, withEntities } from '@ngrx/signals/entities';
-import { ResourceListItem } from '../types';
+import { addEntities, addEntity, withEntities } from '@ngrx/signals/entities';
+import { ResourceListItem, ResourceListItemCreateModel } from '../types';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap } from 'rxjs';
+import { mergeMap, pipe, switchMap, tap } from 'rxjs';
 import { ResourceDataService } from './resource-data.service';
 import { inject } from '@angular/core';
 
@@ -11,6 +11,15 @@ export const ResourceStore = signalStore(
   withMethods((store) => {
     const service = inject(ResourceDataService);
     return {
+      add: rxMethod<ResourceListItemCreateModel>(
+        pipe(
+          mergeMap((item) =>
+            service
+              .addResource(item)
+              .pipe(tap((r) => patchState(store, addEntity(r)))),
+          ),
+        ),
+      ),
       _load: rxMethod<void>(
         pipe(
           switchMap(() =>

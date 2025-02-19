@@ -25,4 +25,20 @@ public class Api : ControllerBase
     };
     return Ok(fakeData);
   }
+
+  [HttpPost("/resources")]
+  public async Task<ActionResult> AddResourceItem([FromBody] ResourceListItemCreateModel request)
+  {
+    var fakeResponse = new ResourceListItemModel
+    {
+      Id = Guid.NewGuid(),
+      Title = request.Title,
+      Description = request.Description,
+      CreatedBy = "sue@aol.com", // ??
+      CreatedOn = DateTime.Now,
+      Link = request.Link,
+      Tags = request.Tags,
+    };
+    return Ok(fakeResponse);
+  }
 }

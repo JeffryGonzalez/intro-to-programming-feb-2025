@@ -22,3 +22,14 @@ public record ResourceListItemModel
   public List<string> Tags { get; set; } = new();
 
 }
+
+// {"title":"Some title","description":"Some Description","link":"https://wwww.microsoft.com","linkText":"Microsoft","tags":["where","do","you","want","to","go","today"]}
+
+public class ResourceListItemCreateModel
+{
+  public string Title { get; set; } = string.Empty;
+  public string Description { get; set; } = string.Empty;
+  public string Link { get; set; } = string.Empty;
+  public string LinkText { get; set; } = string.Empty;
+  public List<string> Tags { get; set; } = new();
+}

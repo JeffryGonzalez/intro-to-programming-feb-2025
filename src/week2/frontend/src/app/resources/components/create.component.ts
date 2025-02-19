@@ -1,5 +1,4 @@
-import { JsonPipe } from '@angular/common';
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ResourceStore } from '../services/resource.store';
 import { ResourceListItemCreateModel } from '../types';
@@ -7,10 +6,10 @@ import { ResourceListItemCreateModel } from '../types';
 @Component({
   selector: 'app-resources-create',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, JsonPipe], // this is going to be replaced "sometime soon" with a signals based forms module.
+  imports: [ReactiveFormsModule], // this is going to be replaced "sometime soon" with a signals based forms module.
   template: `
     <p>Create a New Resource</p>
-    <pre>{{ form.value | json }}</pre>
+
     <form [formGroup]="form" class="w-1/3" (ngSubmit)="addItem()">
       <div class="form-control">
         <label for="title" class="label"
@@ -90,5 +89,7 @@ export class CreateComponent {
     const itemToSend = this.form
       .value as unknown as ResourceListItemCreateModel;
     this.store.add(itemToSend);
+
+    this.form.reset();
   }
 }

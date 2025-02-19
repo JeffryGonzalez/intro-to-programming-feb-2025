@@ -9,7 +9,8 @@ public static class Endpoints
     // this will add a method to the Endpoint Route Builder called "MapTodos"
     public static IEndpointRouteBuilder MapTodos(this IEndpointRouteBuilder builder)
     {
-        // GET /todos
+    // GET /todos
+    
         builder.MapGet("/todos", async (IDocumentSession session) =>
         {
             await Task.Delay(3000);

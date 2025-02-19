@@ -1,4 +1,4 @@
-﻿
+
 
 
 namespace Banking.Tests.Syntax;
@@ -27,6 +27,7 @@ public class Types
 
       
         Assert.Equal("Bob", Name);
+    Assert.Equal("Bob", Name);
 
 
         Assert.Equal(55, age);

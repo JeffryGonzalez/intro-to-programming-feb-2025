@@ -5,8 +5,10 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { mergeMap, pipe, switchMap, tap } from 'rxjs';
 import { ResourceDataService } from './resource-data.service';
 import { inject } from '@angular/core';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
 export const ResourceStore = signalStore(
+  withDevtools('resources'),
   withEntities<ResourceListItem>(),
   withMethods((store) => {
     const service = inject(ResourceDataService);

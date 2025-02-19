@@ -4,3 +4,14 @@ GET {{Resources.Api_HostAddress}}/resources
 Accept: application/json
 
 ###
+
+POST {{Resources.Api_HostAddress}}/resources
+Content-Type: application/json
+
+{
+  "title": "Mozilla Developer Network",
+  "description": "The Web Stuff",
+  "link": "https://mdn.com",
+  "linkText": "MDN",
+  "tags": ["HTML", "CSS", "JAVASCRIPT"]
+}

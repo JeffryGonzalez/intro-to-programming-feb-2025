@@ -1,10 +1,11 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Resources.Api.Resources;
 
 
 // Get a 200 Ok when you do a GET /resources
-public class Api : ControllerBase
+public class Api(IValidator<ResourceListItemCreateModel> validator) : ControllerBase
 {
 
   [HttpGet("/resources")]
@@ -29,6 +30,13 @@ public class Api : ControllerBase
   [HttpPost("/resources")]
   public async Task<ActionResult> AddResourceItem([FromBody] ResourceListItemCreateModel request)
   {
+
+    var validations = await validator.ValidateAsync(request);
+
+    if (validations.IsValid == false)
+    {
+      return BadRequest(validations.ToDictionary()); // more on that later.
+    }
     var fakeResponse = new ResourceListItemModel
     {
       Id = Guid.NewGuid(),

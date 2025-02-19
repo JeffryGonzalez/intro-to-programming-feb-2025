@@ -1,3 +1,6 @@
+using FluentValidation;
+using System.ComponentModel.DataAnnotations;
+
 namespace Resources.Api.Resources;
 
 /* {
@@ -32,4 +35,14 @@ public class ResourceListItemCreateModel
   public string Link { get; set; } = string.Empty;
   public string LinkText { get; set; } = string.Empty;
   public List<string> Tags { get; set; } = new();
+}
+
+public class ResourceListItemCreateModelValidations : AbstractValidator<ResourceListItemCreateModel>
+{
+  public ResourceListItemCreateModelValidations()
+  {
+    RuleFor(m => m.Title).NotEmpty().MinimumLength(3).MaximumLength(100);
+    RuleFor(m => m.Link).NotEmpty();
+    RuleFor(m => m.LinkText).NotEmpty().MinimumLength(3).MaximumLength(10);
+  }
 }

@@ -1,3 +1,6 @@
+using FluentValidation;
+using Resources.Api.Resources;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +19,8 @@ builder.Services.AddCors(options =>
     pol.AllowAnyOrigin();
   });
 });
+
+builder.Services.AddScoped<IValidator<ResourceListItemCreateModel>, ResourceListItemCreateModelValidations>();
 
 var app = builder.Build();
 

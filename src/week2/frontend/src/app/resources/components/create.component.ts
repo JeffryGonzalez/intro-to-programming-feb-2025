@@ -32,7 +32,7 @@ import { ResourceListItemCreateModel } from '../types';
       @if (titlef.invalid && (titlef.dirty || titlef.touched)) {
         <div class="alert alert-error">
           @if (titlef.hasError('required')) {
-            <p>You have to give us some text to show with the title</p>
+            <p>We need a title to display for this resource.</p>
           }
           @if (titlef.hasError('minlength')) {
             @let mlError = titlef.getError('minlength');

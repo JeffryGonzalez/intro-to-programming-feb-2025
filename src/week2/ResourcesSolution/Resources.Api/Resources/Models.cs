@@ -43,6 +43,6 @@ public class ResourceListItemCreateModelValidations : AbstractValidator<Resource
   {
     RuleFor(m => m.Title).NotEmpty().MinimumLength(3).MaximumLength(100);
     RuleFor(m => m.Link).NotEmpty();
-    RuleFor(m => m.LinkText).NotEmpty().MinimumLength(3).MaximumLength(10);
+    RuleFor(m => m.LinkText).NotEmpty().MinimumLength(3).MaximumLength(20);
   }
 }

@@ -9,9 +9,9 @@ POST {{Resources.Api_HostAddress}}/resources
 Content-Type: application/json
 
 {
-  "title": "Mozilla Developer Network",
-  "description": "The Web Stuff",
-  "link": "https://mdn.com",
-  "linkText": "MDN",
-  "tags": ["HTML", "CSS", "JAVASCRIPT"]
+  "title": "NGRX Docs Site",
+  "description": "SignalStore, Store, Etc.",
+  "link": "https://ngrx.io",
+  "linkText": "NGRX",
+  "tags": ["Angular", "State", "Redux", "Signals"]
 }

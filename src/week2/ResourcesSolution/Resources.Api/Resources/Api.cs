@@ -12,20 +12,18 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
   [HttpGet("/resources")]
   public async Task<ActionResult> GetAllResources()
   {
-    var fakeData = new List<ResourceListItemModel>()
-    {
-        new ResourceListItemModel()
-        {
-          Id = Guid.NewGuid(),
-          Title = "Learn .NET",
-          Description = "Microsoft's .NET Educational Site",
-          CreatedBy = "bob@aol.com",
-          CreatedOn = DateTime.Now,
-          Link = "https://dotnet.microsoft.com/en-us/learn",
-          Tags = [".NET","Microsoft", "APIS"]
-        }
-    };
-    return Ok(fakeData);
+    var response = await session.Query<ResourceListItemEntity>()
+       .Select(r => new ResourceListItemModel() {
+
+         Id = r.Id,
+         CreatedBy = r.CreatedBy,
+         CreatedOn = r.CreatedOn,
+         Description = r.Description,
+         Link = r.Link,
+         Tags = r.Tags,
+         Title = r.Title,
+       }).ToListAsync();
+    return Ok(response);
   }
 
   [HttpPost("/resources")]

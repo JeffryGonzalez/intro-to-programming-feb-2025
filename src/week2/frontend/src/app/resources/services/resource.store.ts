@@ -17,8 +17,9 @@ import { withDevtools } from '@angular-architects/ngrx-toolkit';
 // Higher-Ordered Function
 export const ResourceStore = signalStore(
   withDevtools('resources'),
-  withState<{ filteredBy: string | null }>({
+  withState<{ filteredBy: string | null; tags: string[] }>({
     filteredBy: null,
+    tags: [],
   }),
   withEntities<ResourceListItem>(),
   withComputed((store) => {
@@ -43,9 +44,15 @@ export const ResourceStore = signalStore(
             (
               item, // mergeMap - don't cancel "inflight" requests, I need the results of each of these calls.
             ) =>
-              service
-                .addResource(item)
-                .pipe(tap((r) => patchState(store, addEntity(r)))),
+              service.addResource(item).pipe(
+                tap((r) => patchState(store, addEntity(r))),
+                tap((r) => {
+                  const tags = r.tags;
+                  const tagList = store.tags();
+                  const newTags = new Set([...tagList, ...tags]);
+                  patchState(store, { tags: [...newTags] });
+                }),
+              ),
           ),
         ),
       ),
@@ -53,9 +60,22 @@ export const ResourceStore = signalStore(
         pipe(
           switchMap(() =>
             // switchMap - cancel "inflight" requests, I only care about the latest one.
-            service
-              .getResource()
-              .pipe(tap((r) => patchState(store, addEntities(r)))),
+            service.getResource().pipe(
+              tap((r) => patchState(store, addEntities(r))),
+              tap((items) => {
+                const tagsOfItemsFromApi = items
+                  .map((item) => item.tags)
+                  .flat(); // [ 'angular', 'ngrx', 'angular', 'rxjs']
+
+                const uniqueTags = Array.from(new Set(tagsOfItemsFromApi)); // this gives me just the unique items
+
+                const tagList = store.tags();
+                const newTags = uniqueTags.filter(
+                  (tag) => !tagList.includes(tag),
+                );
+                patchState(store, { tags: [...newTags] });
+              }),
+            ),
           ),
         ),
       ),

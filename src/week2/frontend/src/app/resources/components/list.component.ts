@@ -20,7 +20,12 @@ import { FilterComponent } from './filter-component';
     <app-resource-filter />
     @if (store.filteredBy() !== null) {
       <p>Filtering By: {{ store.filteredBy() }}</p>
-      <a [routerLink]="['.']" class="btn btn-xs btn-secondary">Clear Filter</a>
+      <a
+        [routerLink]="['.']"
+        [queryParams]="{ filter: null }"
+        class="btn btn-xs btn-secondary"
+        >Clear Filter</a
+      >
     }
     <div
       class="grid grid-cols-3  lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4"

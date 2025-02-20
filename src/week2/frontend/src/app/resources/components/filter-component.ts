@@ -5,6 +5,7 @@ import {
   inject,
 } from '@angular/core';
 import { ResourceStore } from '../services/resource.store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resource-filter',
@@ -13,7 +14,7 @@ import { ResourceStore } from '../services/resource.store';
   template: `
     <div>
       <select (change)="changeTheFilter($event)" class="input input-bordered">
-        @for (tag of tags(); track tag) {
+        @for (tag of store.tags(); track tag) {
           <option value="{{ tag }}">{{ tag }}</option>
         }
       </select>
@@ -22,10 +23,13 @@ import { ResourceStore } from '../services/resource.store';
   styles: ``,
 })
 export class FilterComponent {
-  tags = signal(['angular', 'k8s', 'dotnet']);
   store = inject(ResourceStore);
+  router = inject(Router);
   changeTheFilter(event: any): void {
     // big old code smell here, yo.
-    this.store.setFilteredBy(event.target.value);
+    this.router.navigate(['/resources/list'], {
+      // TODO: Fix this, Jeff
+      queryParams: { filter: event.target.value },
+    });
   }
 }

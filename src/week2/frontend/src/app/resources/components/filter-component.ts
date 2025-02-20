@@ -27,8 +27,7 @@ export class FilterComponent {
   router = inject(Router);
   changeTheFilter(event: any): void {
     // big old code smell here, yo.
-    this.router.navigate(['/resources/list'], {
-      // TODO: Fix this, Jeff
+    this.router.navigate([], {
       queryParams: { filter: event.target.value },
     });
   }

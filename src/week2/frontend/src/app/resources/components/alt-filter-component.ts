@@ -9,12 +9,23 @@ import { ResourceStore } from '../services/resource.store';
 
   template: `
     <div class="grid gap-2 grid-flow-col ">
+      <div class="badge badge-secondary badge-outline  badge-lg  h-16">
+        <a [routerLink]="['.']" [queryParams]="{ filter: null }">
+          Clear Filters
+        </a>
+      </div>
       @for (tag of store.tags(); track tag) {
-        <div
-          class="badge badge-secondary badge-outline hover:badge-lg badge-lg  h-16"
-        >
-          <a [routerLink]="['.']" [queryParams]="{ filter: tag }">{{ tag }}</a>
-        </div>
+        @if (store.filteredBy() === tag) {
+          <div class="badge  hover:badge-lg badge-lg  h-16 badge-primary">
+            <p>{{ tag }}</p>
+          </div>
+        } @else {
+          <div class="badge badge-secondary badge-outline  badge-lg  h-16">
+            <a [routerLink]="['.']" [queryParams]="{ filter: tag }">{{
+              tag
+            }}</a>
+          </div>
+        }
       }
     </div>
   `,

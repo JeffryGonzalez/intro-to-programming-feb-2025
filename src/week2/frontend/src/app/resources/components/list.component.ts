@@ -10,16 +10,14 @@ import { ResourceStore } from '../services/resource.store';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FilterComponent } from './filter-component';
 
 @Component({
   selector: 'app-resources-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LinkDocsDisplayItemComponent, RouterLink],
+  imports: [LinkDocsDisplayItemComponent, RouterLink, FilterComponent],
   template: `
-    <button (click)="store.load()" class="btn btn-primary">
-      Reload The Data
-    </button>
-
+    <app-resource-filter />
     @if (store.filteredBy() !== null) {
       <p>Filtering By: {{ store.filteredBy() }}</p>
       <a [routerLink]="['.']" class="btn btn-xs btn-secondary">Clear Filter</a>

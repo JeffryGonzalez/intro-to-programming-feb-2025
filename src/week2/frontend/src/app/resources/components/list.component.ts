@@ -26,7 +26,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     <div
       class="grid grid-cols-3  lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-4"
     >
-      @for (link of store.entities(); track link.id) {
+      @for (link of store.filteredResourceList(); track link.id) {
         <app-link-docs-display-item [link]="link" />
       } @empty {
         <p>You don't have any resources! Add Some?</p>

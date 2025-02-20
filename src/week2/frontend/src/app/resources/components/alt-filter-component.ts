@@ -1,18 +1,21 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ResourceStore } from '../services/resource.store';
 
 @Component({
-  selector: 'app-resource-filter',
+  selector: 'app-resource-filter-2',
+  imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+
   template: `
-    <div>
-      <select (change)="changeTheFilter($event)" class="input input-bordered">
-        @for (tag of store.tags(); track tag) {
-          <option value="{{ tag }}">{{ tag }}</option>
-        }
-      </select>
+    <div class="grid gap-2 grid-flow-col ">
+      @for (tag of store.tags(); track tag) {
+        <div
+          class="badge badge-secondary badge-outline hover:badge-lg badge-lg  h-16"
+        >
+          <a [routerLink]="['.']" [queryParams]="{ filter: tag }">{{ tag }}</a>
+        </div>
+      }
     </div>
   `,
   styles: ``,

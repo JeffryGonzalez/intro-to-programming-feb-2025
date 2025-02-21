@@ -42,6 +42,10 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
 
    
     entityToSave.CreatedBy = await userInfo.GetUserNameAsync();
+
+    // Distributed Transaction - Both of these things have to happen or neither of them should.
+    // "Transactional Outbox"
+    // 
     if (request.Tags.Any(t => t == "security"))
     {
       // send an HTTP request to an API that doesn't even exist yet, and take the code that doesn't exist yet, and store it in the database

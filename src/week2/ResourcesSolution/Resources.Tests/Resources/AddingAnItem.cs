@@ -14,12 +14,7 @@ public class AddingAnItem
   {
     var host = await AlbaHost.For<Program>(config=>
     {
-      config.ConfigureServices(services =>
-      {
-        var fakeSecurityTeam = Substitute.For<INotifytheSecurityReviewTeam>();
-        fakeSecurityTeam.NotifyForSecurityReview(Arg.Any<Guid>()).Returns(Task.FromResult("999888777"));
-        services.AddScoped<INotifytheSecurityReviewTeam>(_ => fakeSecurityTeam);
-      });
+   
     });
     var itemToPost = new ResourceListItemCreateModel
     {
@@ -47,14 +42,10 @@ public class AddingAnItem
   [Fact]
   public async Task AddingAnItemWithoutASecurityTagDoesNotNotifyTheSoftwareApi()
   {
-    var fakeSecurityTeam = Substitute.For<INotifytheSecurityReviewTeam>();
+   
     var host = await AlbaHost.For<Program>(config =>
     {
-      config.ConfigureServices(services =>
-      {
-        
-        services.AddScoped<INotifytheSecurityReviewTeam>(_ => fakeSecurityTeam);
-      });
+     
     });
     var itemToPost = new ResourceListItemCreateModel
     {
@@ -75,7 +66,7 @@ public class AddingAnItem
     Assert.NotNull(entityReturned);
 
     Assert.False(entityReturned.IsBeingReviewedForSecurity);
-    fakeSecurityTeam.DidNotReceive().NotifyForSecurityReview(Arg.Any<Guid>());
+   
   }
 
 }

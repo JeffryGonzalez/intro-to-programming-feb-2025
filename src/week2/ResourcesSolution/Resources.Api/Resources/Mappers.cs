@@ -28,3 +28,7 @@ public static partial class EntityMappers
 
   static DateTimeOffset GetCreatedBy() => DateTimeOffset.UtcNow;
 }
+
+// Mapping - "If there is a place you want to go, it will get you there you know, it's the map, it's the map it's the map it's the map.
+
+// 1 (n)=> (n + n).toString()  "2"

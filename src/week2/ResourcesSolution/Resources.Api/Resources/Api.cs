@@ -25,7 +25,8 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
   [HttpPost("/resources")]
   public async Task<ActionResult> AddResourceItem(
     [FromBody] ResourceListItemCreateModel request,
-    [FromServices] UserInformationProvider userInfo)
+    [FromServices] UserInformationProvider userInfo,
+  [FromServices] INotifytheSecurityReviewTeam _securityReviewTeam)
   {
 
 
@@ -36,25 +37,33 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
       return BadRequest(validations.ToDictionary()); // more on that later.
     }
 
-    //var entityToSave = request.MapFromRequestModel();
-
-    
 
     var entityToSave = request.MapFromRequestModel();
 
    
     entityToSave.CreatedBy = await userInfo.GetUserNameAsync();
-   
-    session.Store(entityToSave);
-    await session.SaveChangesAsync();
     if (request.Tags.Any(t => t == "security"))
     {
       // send an HTTP request to an API that doesn't even exist yet, and take the code that doesn't exist yet, and store it in the database
       // and add a property to the response that says "pendingSecurityReview"
+      // WTCYWYH
+     
+    string securityReviewId = await _securityReviewTeam.NotifyForSecurityReview(entityToSave.Id);
+      entityToSave.SecurityReviewId = securityReviewId;
+
+      // TODO: Add Something to the Entity?
+
     }
+   
+    session.Store(entityToSave);
+    await session.SaveChangesAsync();
 
 
     var response = entityToSave.MapToResponse();
+    if (entityToSave.SecurityReviewId != null)
+    {
+      response.IsBeingReviewedForSecurity = true;
+    }
 
  
     return Ok(response);
@@ -78,3 +87,8 @@ public class UserInformationProvider
   }
 }
 
+
+public interface INotifytheSecurityReviewTeam
+{
+  Task<string> NotifyForSecurityReview(Guid id);
+}

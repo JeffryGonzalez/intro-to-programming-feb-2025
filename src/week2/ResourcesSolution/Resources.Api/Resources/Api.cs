@@ -28,7 +28,7 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
     [FromServices] UserInformationProvider userInfo)
   {
 
-    await Task.Delay(3000);
+
     var validations = await validator.ValidateAsync(request);
 
     if (validations.IsValid == false)
@@ -38,11 +38,7 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
 
     //var entityToSave = request.MapFromRequestModel();
 
-    if (request.Tags.Any(t => t == "security"))
-    {
-      // send an HTTP request to an API that doesn't even exist yet, and take the code that doesn't exist yet, and store it in the database
-      // and add a property to the response that says "pendingSecurityReview"
-    }
+    
 
     var entityToSave = request.MapFromRequestModel();
 
@@ -51,6 +47,11 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
    
     session.Store(entityToSave);
     await session.SaveChangesAsync();
+    if (request.Tags.Any(t => t == "security"))
+    {
+      // send an HTTP request to an API that doesn't even exist yet, and take the code that doesn't exist yet, and store it in the database
+      // and add a property to the response that says "pendingSecurityReview"
+    }
 
 
     var response = entityToSave.MapToResponse();

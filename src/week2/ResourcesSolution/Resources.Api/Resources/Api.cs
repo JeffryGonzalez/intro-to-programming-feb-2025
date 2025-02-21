@@ -44,18 +44,8 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
       // and add a property to the response that says "pendingSecurityReview"
     }
 
+    var entityToSave = request.MapFromRequestModel();
 
-    var entityToSave = new ResourceListItemEntity
-    {
-      Id = Guid.NewGuid(),
-      Description = request.Description,
-      Title = request.Title,
-      Link = request.Link,
-      LinkText = request.LinkText,
-      Tags = request.Tags,
-      CreatedBy = await  userInfo.GetUserNameAsync(),
-      CreatedOn = DateTimeOffset.Now,
-    };
    
     entityToSave.CreatedBy = await userInfo.GetUserNameAsync();
    
@@ -63,14 +53,9 @@ public class Api(IValidator<ResourceListItemCreateModel> validator, IDocumentSes
     await session.SaveChangesAsync();
 
 
-
-    // From that entity, create a response to send to the requester
-    // Mapping from ResourceListItemEntity to ResourceListItemModel
-  
     var response = entityToSave.MapToResponse();
 
  
-    // TODO: Consider making this a 201 Created. More "nuanced".
     return Ok(response);
   }
 
